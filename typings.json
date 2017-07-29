@@ -1,0 +1,6 @@
+{
+  "globalDependencies": {},
+  "dependencies": {
+    "webpack": "registry:npm/webpack#1.12.9+20160418172948"
+  }
+}
