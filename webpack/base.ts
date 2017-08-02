@@ -27,7 +27,7 @@ const config = {
     ]
   },
   output: {
-    path: '/Users/fabio/Desktop/noty/dist', //FIXME: HACK, path.join ( __dirname, '../../dist' ),
+    path: '/Users/fabio/Dropbox/Projects/noty/dist', //FIXME: HACK, path.join ( __dirname, '../../dist' ),
     filename: '[name].js',
     libraryTarget: 'commonjs2',
     pathinfo: true

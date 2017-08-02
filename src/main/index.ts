@@ -1,25 +1,44 @@
 
 /* IMPORT */
 
-import * as debug from 'electron-debug';
-import {app, BrowserWindow} from 'electron';
+import * as _ from 'lodash';
+import {app, BrowserWindow, ipcMain as ipc} from 'electron';
+// import * as is from 'electron-is';
+import * as windowStateManager from 'electron-window-state';
+import Utils from './utils';
 
 /* MAIN */
 
-debug ({ showDevTools: false });
+Utils.initDebug ();
+Utils.initContextMenu ();
+Utils.initAbout ();
+Utils.initStore ();
+
+app.dock.setIcon ( 'assets/images/icon/icon.png' ); //TODO: Remove this, shouldn't be necessary after packaging
 
 let win;
 
-app.on ( 'window-all-closed', app.quit.bind ( app ) );
+app.on ( 'window-all-closed', () => {
+  // if ( is.macOS () ) return;
+  app.quit ();
+});
+
 app.on ( 'ready', () => {
 
-  win = new BrowserWindow ({
-    title: app.getName (),
-    width: 250,
-    height: 450
+  const windowState = windowStateManager ({
+    defaultWidth: 250,
+    defaultHeight: 450
   });
 
-  win.loadURL ( `file:///Users/fabio/Desktop/noty/src/ui/app.html` ); //FIXME: HACK
+  win = new BrowserWindow ( _.extend ( _.pick ( windowState, ['x', 'y', 'width', 'height'] ), {
+    frame: false,
+    show: false,
+    title: app.getName (), //FIXME
+    icon: 'assets/images/icon/icon.png',
+    backgroundColor: '#fef3a1'
+  }));
+
+  Utils.initMenu ( win );
 
   win.on ( 'ready-to-show', () => {
     win.show ();
@@ -29,5 +48,27 @@ app.on ( 'ready', () => {
   win.on ( 'closed', () => {
     win = null;
   });
+
+  win.on ( 'focus', () => {
+    win.webContents.send ( 'app-focus' );
+  });
+
+  win.on ( 'blur', () => {
+    win.webContents.send ( 'app-blur' );
+  });
+
+  ipc.on ( 'window-close', () => {
+    win.close ();
+  });
+
+  win.loadURL ( `file:///Users/fabio/Dropbox/Projects/noty/src/ui/app/index.html` ); //FIXME: HACK
+
+  windowState.manage ( win );
+
+  if ( DEVELOPMENT ) {  //TODO: Remove this, maybe
+
+    setInterval ( () => windowState.saveState ( win ), 1000 );
+
+  }
 
 });

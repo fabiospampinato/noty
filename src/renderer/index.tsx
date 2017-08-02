@@ -9,9 +9,9 @@ render ();
 
 /* HOT MODULE REPLACEMENT */
 
-if ( module['hot'] ) {
+if ( module.hot ) {
 
-  module['hot'].accept ( './render', () => {
+  module.hot.accept ( './render', () => {
     require ( './render' ).default ();
   });
 

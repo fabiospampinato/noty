@@ -1,0 +1,24 @@
+
+/* VARIABLES */
+
+$gutter: 10px;
+$gutter-half: $gutter / 2;
+
+$color-base: #fef3a1;
+$color-text: #1f1f1f;
+
+$color-titlebar: darken( $color-base, 15% );
+$color-titlebar-title: transparent;
+$color-titlebar-title-hover: darken( $color-titlebar, 15% );
+$color-titlebar-title-active: darken( $color-titlebar, 20% );
+
+$color-code-cursor: $color-text;
+$color-code-selected: $color-titlebar;
+$color-code-match: transparentize( $color-code-selected, .52 );
+$color-code-dialog: $color-titlebar;
+
+$code-font-size: 13px;
+$code-dialog-font-size: $code-font-size;
+
+$titlebar-height: 22px;
+$titlebar-font-size: 12px;
