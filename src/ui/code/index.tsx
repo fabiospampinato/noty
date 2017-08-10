@@ -3,6 +3,7 @@
 
 import '../../../node_modules/codemirror/addon/search/search.js';
 import '../../../node_modules/codemirror/keymap/sublime.js';
+import './dialog.js';
 import * as React from 'react';
 import CodeMirror from 'react-codemirror2';
 import addSelection from './add_selection';
@@ -36,13 +37,14 @@ const options = {
     'Alt-LeftClick': addSelection,
     'Cmd-Enter': Todo.toggleCheckbox,
     'Alt-D': Todo.toggleCheckmark,
-    'Alt-C': Todo.toggleCancelmark
+    'Alt-C': Todo.toggleCancelmark,
+    'F2': false
   }
 };
 
 /* CODE */
 
-const Code = ({ value, onChange }) => <CodeMirror value={value} onValueChange={onChange} options={options} />;
+const Code = ({ value, onChange, onEditor }) => <CodeMirror value={value} onValueChange={onChange} editorDidMount={onEditor} options={options} />;
 
 /* EXPORT */
 

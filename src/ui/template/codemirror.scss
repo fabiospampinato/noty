@@ -1,7 +1,7 @@
 
 @font-face {
   font-family: "FiraCode";
-  src: url("../../../assets/fonts/FiraCode-Regular.woff2") format("woff2");
+  src: url("../../../resources/fonts/FiraCode-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
@@ -54,6 +54,7 @@
     }
 
     .CodeMirror-dialog {
+
       display: flex;
       align-items: center;
       position: fixed;
@@ -64,9 +65,15 @@
       padding: $gutter-half $gutter;
       border-bottom-width: 0;
       font-family: sans-serif;
+
+      ~ .CodeMirror-scroll {
+        padding-top: $code-dialog-height;
+      }
+
     }
 
     .CodeMirror-search-label {
+      white-space: nowrap;
       padding-right: $gutter;
     }
 

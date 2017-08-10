@@ -30,7 +30,9 @@ const Todo = {
 
       } else if ( insertToken ) {
 
-        const spaceIndex = Math.max ( line.search ( /\S/ ), 0 );
+        let spaceIndex = line.search ( /\S/ );
+
+        if ( spaceIndex === -1 ) spaceIndex = line.length;
 
         Utils.replace ( cm, lineNr, `${insertToken} `, spaceIndex );
 
@@ -48,13 +50,13 @@ const Todo = {
 
   toggleCheckmark ( cm ) {
 
-    Todo.toggleToken ( cm, Todo.CHECKMARK, Todo.CHECKBOX );
+    Todo.toggleToken ( cm, Todo.CHECKMARK, Todo.CHECKBOX, Todo.CHECKMARK );
 
   },
 
   toggleCancelmark ( cm ) {
 
-    Todo.toggleToken ( cm, Todo.CANCELMARK, Todo.CHECKBOX );
+    Todo.toggleToken ( cm, Todo.CANCELMARK, Todo.CHECKBOX, Todo.CANCELMARK );
 
   }
 

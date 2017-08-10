@@ -1,8 +1,10 @@
 
 /* IMPORT */
 
+import * as _ from 'lodash';
 import {app, Menu, shell} from 'electron';
 import * as contextMenu from 'electron-context-menu';
+import * as localShortcut from 'electron-localshortcut';
 import * as Store from 'electron-store';
 import * as project from '../../package.json';
 
@@ -16,7 +18,13 @@ const Utils = {
 
       const debug = require ( 'electron-debug' );
 
-      debug ({ showDevTools: false });
+      debug ({
+        showDevTools: true
+      });
+
+      const {default: installExtension, REACT_DEVELOPER_TOOLS} = require ( 'electron-devtools-installer' );
+
+      installExtension ( REACT_DEVELOPER_TOOLS );
 
     }
 
@@ -31,15 +39,16 @@ const Utils = {
   getStore () {
 
     return new Store ({
-      defaults: { //TODO: Make it more interesting, showcasing features and using multiple notes
+      defaults: {
         note: app.getName (),
         notes: [{
           title: app.getName (),
-          content: '//TODO'
+          content: 'Welcome to Noty\n\nSince we are using the FiraCode font you can type many glyphs like: -> ->> => ==> ~> ~~> ~~> |> <| <>\n\nWe support To-Do lists by default:\n  ✔ Read the readme\n  ☐ Star the repository\n  ☐ Share with friends\n\nAnd multiple notes, try clicking the title to switch note.'
+        }, {
+          title: 'Another note',
+          content: 'Pretty cool, huh?'
         }]
-      },
-      name: 'store',
-      cwd: '/Users/fabio/Dropbox/Projects/noty/dist'
+      }
     });
 
   },
@@ -103,12 +112,9 @@ const Utils = {
           },
           { type: 'separator' },
           {
-            label: 'Open Config',
+            label: 'Open Configuration',
             click: () => global['store'].openInEditor ()
-          },
-          // {
-          //   label: 'Print...'
-          // }
+          }
         ]
       },
       {
@@ -136,9 +142,18 @@ const Utils = {
       {
         label: 'View',
         submenu: [
-          { role: 'reload' }, //FIXME: Does it get removed when packaging?
-          { role: 'forcereload' }, //FIXME: Does it get removed when packaging?
-          { role: 'toggledevtools' }, //FIXME: Does it get removed when packaging?
+          {
+            role: 'reload',
+            visible: DEVELOPMENT
+          },
+          {
+            role: 'forcereload',
+            visible: DEVELOPMENT
+          },
+          {
+            role: 'toggledevtools',
+            visible: DEVELOPMENT
+          },
           { type: 'separator' },
           { role: 'resetzoom' },
           { role: 'zoomin' },
@@ -155,10 +170,21 @@ const Utils = {
           { role: 'zoom' },
           { type: 'separator' },
           {
+            label: 'Select Previous Note',
+            accelerator: 'cmd+alt+left',
+            click: () => win.webContents.send ( 'note-select-previous' )
+          },
+          {
+            label: 'Select Next Note',
+            accelerator: 'cmd+alt+right',
+            click: () => win.webContents.send ( 'note-select-right' )
+          },
+          { type: 'separator' },
+          {
             type: 'checkbox',
             label: 'Float on Top',
             checked: win.isAlwaysOnTop (),
-            click: () => win.setAlwaysOnTop ( !win.isAlwaysOnTop () );
+            click: () => win.setAlwaysOnTop ( !win.isAlwaysOnTop () )
           },
           { type: 'separator' },
           { role: 'front' }
@@ -185,7 +211,22 @@ const Utils = {
     ];
 
     const menu = Menu.buildFromTemplate ( template );
+
     Menu.setApplicationMenu ( menu );
+
+  },
+
+  initLobalShortcuts ( win ) {
+
+    /* CMD + 1/9 */
+
+    const nrs = _.range ( 1, 10 );
+
+    nrs.forEach ( nr => {
+      localShortcut.register ( win, `Cmd+${nr}`, () => {
+        win.webContents.send ( 'note-select', nr )
+      });
+    });
 
   }
 

@@ -1,41 +1,11 @@
 
-✔ setup codemirror @done (7/30/2017, 3:54:41 PM)
-  ✔ line wrapping @done (7/30/2017, 2:00:14 PM)
-  ✔ search @done (7/30/2017, 7:13:19 AM)
-  ✔ todo capabilities (todoToggleCheckbox todoToggleCheckmark) @done (7/30/2017, 2:50:56 PM)
-  ✔ alt-click for multiple cursor @done (7/30/2017, 3:50:24 PM)
-  ✔ alt-c for todo -> cancel @done (7/30/2017, 3:54:34 PM)
-  ✔ last line not shown @done (7/30/2017, 3:00:42 PM)
-  ✔ fix multiline selection @done (7/30/2017, 6:19:13 AM)
-  ✔ fix cursor overflow @done (7/30/2017, 6:19:13 AM)
-  ✔ fix firacode support @done (7/30/2017, 7:22:01 AM) [~]
-✔ proper titlebar @done (8/1/2017, 7:24:35 AM)
-  ✔ close button @done (8/1/2017, 5:45:59 AM)
-    ✔ hide if the app is not focused @done (8/1/2017, 6:23:05 AM)
-  ✔ switch note @done (8/1/2017, 7:24:34 AM)
-☐ Custom text dialog
-  ☐ store CodeMirror instance
-  ☐ call `openDialog` on it
-  ☐ handle enter/esc events
-  ☐ Add a class when `dialog` is open
-    ☐ move codemirror down a bit
-☐ proper menu
-  ✔ floating @done (8/2/2017, 7:38:43 PM)
-  ✔ check for updated @done (8/2/2017, 7:12:08 PM)
-  ✔ issues etc. @done (8/2/2017, 7:12:19 PM)
-  ☐ file actions
-    ☐ New Note
-    ☐ Rename Note
-    ✔ Delete Note @done (8/2/2017, 10:54:25 PM)
-✔ proper styling @done (8/3/2017, 12:27:37 AM)
-  ✔ titlebar @done (8/1/2017, 5:39:59 AM)
-  ✔ about page @done (8/1/2017, 8:00:06 AM)
-  ✔ better colors etc. @done (8/1/2017, 5:40:00 AM)
-☐ package app
-  ☐ icon
-  ☐ write readme
-  ☐ make a relase
-  ☐ publish
-☐ Automatic `Check for Updates...`
 ☐ Make a boilerplate out of this project
+☐ Add automatic `Check for Updates...`
 ☐ Add `Print...` support
+☐ Add Links support:
+  ☐ underlined
+  ☐ cmd+click to go there
+☐ Mark (Bold, Italic, Strikethrough etc...)
+  ☐ http://codemirror.net/doc/manual.html#markText
+  ☐ https://gist.github.com/tovic/f1f21602e6b682ad78d6140f505e14f3
+  ☐ https://groups.google.com/forum/#!topic/codemirror/qWu1ZUiBUWM

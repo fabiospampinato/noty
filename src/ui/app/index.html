@@ -7,7 +7,7 @@
         if ( !process.env.HOT ) {
           const link = document.createElement ( 'link' );
           link.rel = 'stylesheet';
-          link.href = '/client.css';
+          link.href = 'template.css';
           document.getElementsByTagName ( 'head' )[0].appendChild ( link );
         }
       }());
@@ -17,7 +17,7 @@
     <div id="react-root"></div>
     <script>
       (function () {
-        const script = process.env.HOT ? 'http://localhost:3000/dist/renderer.js' : '/dist/renderer.js';
+        const script = process.env.HOT ? 'http://localhost:3000/dist/renderer.js' : 'renderer.js';
         document.write ( `<script defer src="${script}"><\/script>` );
       }());
     </script>

@@ -1,14 +1,11 @@
 
 /* IMPORT */
 
-import merge from 'conf-merge';
 import * as webpack from 'webpack';
-import baseConfig from './base';
 
-/* RENDERER */
+/* CONFIG */
 
 const config = {
-  target: 'electron-renderer',
   entry: {
     renderer: [
       'react-hot-loader/patch',
@@ -26,4 +23,4 @@ const config = {
 
 /* EXPORT */
 
-export default merge ( {}, baseConfig, config );
+export default config;

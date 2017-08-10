@@ -2,8 +2,8 @@
 /* IMPORT */
 
 import merge from 'conf-merge';
-import baseConfig from './base';
 import * as nodeExternals from 'webpack-node-externals';
+import baseConfig from './base';
 
 /* MAIN */
 
