@@ -4,6 +4,7 @@
 import '../../../node_modules/codemirror/addon/search/search.js';
 import '../../../node_modules/codemirror/keymap/sublime.js';
 import './dialog.js';
+import './tokens';
 import * as React from 'react';
 import CodeMirror from 'react-codemirror2';
 import addSelection from './add_selection';
@@ -40,6 +41,7 @@ const options = {
     'Alt-C': Todo.toggleCancelmark,
     'F2': false,
     'Cmd-M': false,
+    'Cmd-LeftClick': false
   }
 };
 

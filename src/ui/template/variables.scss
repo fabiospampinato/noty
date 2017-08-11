@@ -6,6 +6,9 @@ $gutter-half: $gutter / 2;
 
 $color-base: #fef3a1;
 $color-text: #1f1f1f;
+$color-link: #1543F9;
+$color-link-hover: lighten( $color-link, 5% );
+$color-link-active: darken( $color-link, 5% );
 
 $color-titlebar: darken( $color-base, 15% );
 $color-titlebar-title: transparent;

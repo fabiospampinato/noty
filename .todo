@@ -1,11 +1,7 @@
 
-☐ Make a boilerplate out of this project
+☐ Make a boilerplate out of this project (+React Router +Redux)
 ☐ Add automatic `Check for Updates...`
 ☐ Add `Print...` support
-☐ Add Links support:
-  ☐ underlined
-  ☐ cmd+click to go there
 ☐ Mark (Bold, Italic, Strikethrough etc...)
   ☐ http://codemirror.net/doc/manual.html#markText
   ☐ https://gist.github.com/tovic/f1f21602e6b682ad78d6140f505e14f3
-  ☐ https://groups.google.com/forum/#!topic/codemirror/qWu1ZUiBUWM

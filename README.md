@@ -29,6 +29,7 @@ Autosaving sticky note with support for multiple notes, find/replace, programmer
 - <kbd>Ctrl+Cmd+Up</kbd> - Move current line up
 - <kbd>Ctrl+Cmd+Down</kbd> - Move current line down
 - <kbd>Alt+Click</kbd> - Add a new cursor
+- <kbd>Cmd+Click</kbd> - Open the clicked link
 - <kbd>Cmd+Enter</kbd> - Toggle a todo checkbox
 - <kbd>Alt+D</kbd> - Toggle a todo check mark
 - <kbd>Alt+C</kbd> - Toggle a todo cancel mark

@@ -91,6 +91,21 @@
       background: $color-code-match !important;
     }
 
+    .cm-link { //TODO: Better styling if `metaKey` is pressed
+
+      color: $color-link;
+      // cursor: pointer;
+
+      // &:hover {
+      //   color: $color-link-hover;
+      // }
+
+      // &:active {
+      //   color: $color-link-active;
+      // }
+
+    }
+
   }
 
 }
