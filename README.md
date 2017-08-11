@@ -23,9 +23,9 @@ Autosaving sticky note with support for multiple notes, find/replace, programmer
 - <kbd>Shift+Tab</kbd> - Outdent current line
 - <kbd>Cmd+F</kbd> - Find
 - <kbd>Cmd+G</kbd> - Find next
-- <kbd>Cmd+Shift+G</kbd> - Find previous
-- <kbd>Cmd+H</kbd> - Replace
-- <kbd>Cmd+Shift+H</kbd> - Replace all
+- <kbd>Shift+Cmd+G</kbd> - Find previous
+- <kbd>Shift+Cmd+H</kbd> - Replace
+- <kbd>Shift+Cmd+Alt+H</kbd> - Replace all
 - <kbd>Ctrl+Cmd+Up</kbd> - Move current line up
 - <kbd>Ctrl+Cmd+Down</kbd> - Move current line down
 - <kbd>Alt+Click</kbd> - Add a new cursor

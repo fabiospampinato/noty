@@ -28,9 +28,9 @@ const options = {
     'Shift-Tab': 'indentLess',
     'Cmd-F': 'findPersistent',
     'Cmd-G': 'findPersistentNext',
-    'Cmd-Shift-G': 'findPersistentPrev',
-    'Cmd-H': 'replace',
-    'Cmd-Shift-H': 'replaceAll',
+    'Shift-Cmd-G': 'findPersistentPrev',
+    'Shift-Cmd-H': 'replace',
+    'Shift-Cmd-Alt-H': 'replaceAll',
     'Esc': 'clearSearch',
     'Ctrl-Cmd-Up': 'swapLineUp',
     'Ctrl-Cmd-Down': 'swapLineDown',
@@ -38,7 +38,8 @@ const options = {
     'Cmd-Enter': Todo.toggleCheckbox,
     'Alt-D': Todo.toggleCheckmark,
     'Alt-C': Todo.toggleCancelmark,
-    'F2': false
+    'F2': false,
+    'Cmd-M': false,
   }
 };
 
