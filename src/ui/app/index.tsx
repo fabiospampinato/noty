@@ -247,8 +247,6 @@ class App extends React.Component<any, any> {
     const note = this._getCurrentNote (),
           titles = this.state.store.notes.map ( note => note.title );
 
-    if ( this.editor && !this.editor.getValue () && note.content ) this.editor.setValue ( note.content ); //FIXME: Upstream issue https://github.com/scniro/react-codemirror2/issues/5
-
     return (
       <div id="app" className={this.state.focused ? 'focused' : ''}>
         <Titlebar title={note.title} titles={titles} onChange={this._changeNote} />
