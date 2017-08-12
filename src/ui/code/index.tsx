@@ -45,6 +45,7 @@ const options = {
     'Cmd-S': Font.toggleStrikethrough,
     'F2': false,
     'Cmd-M': false,
+    'Cmd-H': false,
     'Cmd-LeftClick': false
   }
 };
