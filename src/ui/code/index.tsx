@@ -8,6 +8,7 @@ import './tokens';
 import * as React from 'react';
 import CodeMirror from 'react-codemirror2';
 import addSelection from './add_selection';
+import Font from './font';
 import Todo from './todo';
 
 /* OPTIONS */
@@ -39,6 +40,9 @@ const options = {
     'Cmd-Enter': Todo.toggleCheckbox,
     'Alt-D': Todo.toggleCheckmark,
     'Alt-C': Todo.toggleCancelmark,
+    'Cmd-B': Font.toggleBold,
+    'Cmd-I': Font.toggleItalic,
+    'Cmd-S': Font.toggleStrikethrough,
     'F2': false,
     'Cmd-M': false,
     'Cmd-LeftClick': false

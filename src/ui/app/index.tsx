@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import {remote, ipcRenderer as ipc} from 'electron';
 import Code from 'ui/code';
+import Font from 'ui/code/font';
 import Titlebar from 'ui/titlebar';
 import 'ui/template/index.scss';
 import './index.html';
@@ -42,6 +43,9 @@ class App extends React.Component<any, any> {
     ipc.on ( 'note-select', this.noteSelect.bind ( this ) );
     ipc.on ( 'note-select-previous', this.noteSelectPrevious.bind ( this ) );
     ipc.on ( 'note-select-right', this.noteSelectNext.bind ( this ) );
+    ipc.on ( 'note-font-bold', this.noteFontBold.bind ( this ) );
+    ipc.on ( 'note-font-italic', this.noteFontItalic.bind ( this ) );
+    ipc.on ( 'note-font-strikethrough', this.noteFontStrikethrough.bind ( this ) );
     ipc.on ( 'app-focus', () => this.changeFocused ( true ) );
     ipc.on ( 'app-blur', () => this.changeFocused ( false ) );
 
@@ -55,6 +59,9 @@ class App extends React.Component<any, any> {
     ipc.removeAllListeners ( 'note-select' );
     ipc.removeAllListeners ( 'note-select-previous' );
     ipc.removeAllListeners ( 'note-select-right' );
+    ipc.removeAllListeners ( 'note-font-bold' );
+    ipc.removeAllListeners ( 'note-font-italic' );
+    ipc.removeAllListeners ( 'note-font-strikethrough' );
     ipc.removeAllListeners ( 'app-focus' );
     ipc.removeAllListeners ( 'app-blur' );
 
@@ -205,6 +212,24 @@ class App extends React.Component<any, any> {
   noteSelectNext () {
 
     this.noteSelectNavigate ( 1 );
+
+  }
+
+  noteFontBold () {
+
+    Font.toggleBold ( this.editor );
+
+  }
+
+  noteFontItalic () {
+
+    Font.toggleItalic ( this.editor );
+
+  }
+
+  noteFontStrikethrough () {
+
+    Font.toggleStrikethrough ( this.editor );
 
   }
 

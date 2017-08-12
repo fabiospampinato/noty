@@ -106,6 +106,22 @@
 
     }
 
+    .cm-bold {
+      font-weight: bold;
+    }
+
+    .cm-italic {
+      font-style: italic;
+    }
+
+    .cm-strikethrough {
+      text-decoration: line-through;
+    }
+
+    .cm-font-token {
+      opacity: $font-token-opacity;
+    }
+
   }
 
 }

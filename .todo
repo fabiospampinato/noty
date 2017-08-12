@@ -2,6 +2,6 @@
 ☐ Make a boilerplate out of this project (+React Router +Redux)
 ☐ Add automatic `Check for Updates...`
 ☐ Add `Print...` support
-☐ Mark (Bold, Italic, Strikethrough etc...)
-  ☐ http://codemirror.net/doc/manual.html#markText
-  ☐ https://gist.github.com/tovic/f1f21602e6b682ad78d6140f505e14f3
+☐ Font: support for nested styles (_foo *nested* bar_)
+☐ Font: toggle should work like Svelto.Editor's implementation
+☐ Multi-cursor is broken

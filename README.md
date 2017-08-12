@@ -12,6 +12,8 @@ Autosaving sticky note with support for multiple notes, find/replace, programmer
 - Supports multiple notes without needing multiple windows
 - Auto-saves your notes
 - To-Do functionalities built-in
+- Links support
+- Bold/italic/strikethrough support
 - Multiple cursors
 - Find and Replace
 - Programmers shortcuts
@@ -33,6 +35,9 @@ Autosaving sticky note with support for multiple notes, find/replace, programmer
 - <kbd>Cmd+Enter</kbd> - Toggle a todo checkbox
 - <kbd>Alt+D</kbd> - Toggle a todo check mark
 - <kbd>Alt+C</kbd> - Toggle a todo cancel mark
+- <kbd>Cmd+B</kbd> - Toggle bold
+- <kbd>Cmd+I</kbd> - Toggle italic
+- <kbd>Cmd+S</kbd> - Toggle strikethrough
 - <kbd>Cmd+1/9</kbd> - Select the 1st/9th note
 - <kbd>Alt+Cmd+Left</kbd> - Select the previous note
 - <kbd>Alt+Cmd+Left</kbd> - Select the next note

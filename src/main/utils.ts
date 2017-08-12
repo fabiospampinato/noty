@@ -43,7 +43,7 @@ const Utils = {
         note: app.getName (),
         notes: [{
           title: app.getName (),
-          content: 'Welcome to Noty\n\nSince we are using the FiraCode font you can type many glyphs like: -> ->> => ==> ~> ~~> ~~> |> <| <>\n\nWe support To-Do lists by default:\n  ✔ Read the readme\n  ☐ Star the repository\n  ☐ Share with friends\n\nAnd multiple notes, try clicking the title to switch note.'
+          content: 'Welcome to Noty\n\nSince we are using the FiraCode font you can type many glyphs like: -> ->> => ==> ~~> <-< <=< |> <| <>\n\nWe support To-Do lists by default:\n  ✔ Read the readme\n  ☐ Star the repository\n  ☐ Share with friends\n\nLinks: www.example.com\n\nFont styles: *Bold*, _Italic_ and ~Strikethrough~\n\nAnd multiple notes, try clicking the title to switch note.'
         }, {
           title: 'Another note',
           content: 'Pretty cool, huh?'
@@ -136,6 +136,26 @@ const Utils = {
               { role: 'startspeaking' },
               { role: 'stopspeaking' }
             ]
+          }
+        ]
+      },
+      {
+        label: 'Font',
+        submenu: [
+          {
+            label: 'Bold',
+            accelerator: 'cmd+b',
+            click: () => win.webContents.send ( 'note-font-bold' )
+          },
+          {
+            label: 'Italic',
+            accelerator: 'cmd+i',
+            click: () => win.webContents.send ( 'note-font-italic' )
+          },
+          {
+            label: 'Strikethrough',
+            accelerator: 'cmd+s',
+            click: () => win.webContents.send ( 'note-font-strikethrough' )
           }
         ]
       },
