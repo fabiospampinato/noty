@@ -64,6 +64,10 @@ New note and rename:
 
 ![New note and rename](resources/demo/creation.gif)
 
+## Related
+
+- **[vscode-todo-plus](https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-todo-plus)**: Visual Studio Code extension that implements the same To-Do functionalities, and much more.
+
 ## License
 
 MIT © Fabio Spampinato
