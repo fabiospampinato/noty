@@ -26,6 +26,8 @@ const options = {
   scrollbarStyle: 'null',
   keyMap: 'sublime',
   extraKeys: {
+    'Cmd-Z': 'undo',
+    'Shift-Cmd-Z': 'redo',
     'Tab': 'indentMore',
     'Shift-Tab': 'indentLess',
     'Cmd-F': 'findPersistent',

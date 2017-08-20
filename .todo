@@ -5,5 +5,5 @@
 ☐ Font: support for nested styles (_foo *nested* bar_)
 ☐ Font: toggle should work like Svelto.Editor's implementation
 ☐ Multi-cursor is broken
-☐ Clear undo queue when switching notes
+☐ Redo doesn't work
 ☐ Style inside colored todos

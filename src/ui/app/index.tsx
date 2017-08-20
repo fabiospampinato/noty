@@ -186,6 +186,8 @@ class App extends React.Component<any, any> {
 
     this._setStore ();
 
+    this.editor.doc.clearHistory ();
+
   }
 
   noteSelectNavigate ( modifier ) {
