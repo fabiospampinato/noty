@@ -122,6 +122,18 @@
       opacity: $font-token-opacity;
     }
 
+    .cm-todo-project {
+      color: $color-todo-project;
+    }
+
+    .cm-todo-done {
+      color: $color-todo-done;
+    }
+
+    .cm-todo-cancel {
+      color: $color-todo-cancel;
+    }
+
   }
 
 }

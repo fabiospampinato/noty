@@ -20,6 +20,10 @@ $color-code-selected: $color-titlebar;
 $color-code-match: transparentize( $color-code-selected, .52 );
 $color-code-dialog: $color-titlebar;
 
+$color-todo-project: #268FE1;
+$color-todo-done:  #10C413;
+$color-todo-cancel: #f92672;
+
 $code-font-size: 13px;
 $code-dialog-font-size: $code-font-size;
 $code-dialog-height: 27px; //FIXME: Hacky

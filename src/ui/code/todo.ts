@@ -11,6 +11,22 @@ const Todo = {
   CHECKMARK: '✔',
   CANCELMARK: '✘',
 
+  projectRe: /^(?![^\S\n]*☐[^\n@]*)(.+:[^\S\n]*)(?:(?=@)|$)/,
+  doneRe: /^([^\S\n]*✔[^\n@]*)/,
+  cancelRe: /^([^\S\n]*✘[^\n@]*)/,
+
+  getTokens () {
+
+    return {
+      start: [
+        { regex: Todo.projectRe, token: 'todo-project' },
+        { regex: Todo.doneRe, token: 'todo-done' },
+        { regex: Todo.cancelRe, token: 'todo-cancel' }
+      ]
+    };
+
+  },
+
   toggleToken ( cm, token, removeToken, insertToken? ) {
 
     Utils.walkSelections ( cm, ( line, lineNr ) => {
