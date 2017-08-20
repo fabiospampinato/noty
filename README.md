@@ -62,7 +62,7 @@ Switching note:
 
 New note and rename:
 
-![New note and rename](resources/demo/creation-renaming.gif)
+![New note and rename](resources/demo/creation.gif)
 
 ## License
 
