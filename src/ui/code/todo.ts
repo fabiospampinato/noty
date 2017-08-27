@@ -11,17 +11,19 @@ const Todo = {
   CHECKMARK: '✔',
   CANCELMARK: '✘',
 
-  projectRe: /^(?![^\S\n]*☐[^\n@]*)(.+:[^\S\n]*)(?:(?=@)|$)/,
-  doneRe: /^([^\S\n]*✔[^\n@]*)/,
-  cancelRe: /^([^\S\n]*✘[^\n@]*)/,
+  boxRe: /^[^\S\n]*((?:[-❍❑■⬜□☐▪▫–—≡→›]|\[ \])[^\n@]*)/,
+  doneRe: /^[^\S\n]*((?:[✔✓☑+]|\[[x+]\])[^\n@]*)/,
+  cancelRe: /^[^\S\n]*((?:[✘x]|\[-\])[^\n@]*)/,
+  projectRe: /^(?![^\S\n]*(?:[-❍❑■⬜□☐▪▫–—≡→›✘x✔✓☑+]|\[[ x+-]\])[^\n@]*)[^\S\n]*(.+:[^\S\n]*)(?:(?=@)|$)/,
 
   getTokens () {
 
     return {
       start: [
-        { regex: Todo.projectRe, token: 'todo-project' },
+        { regex: Todo.boxRe, token: 'todo-box' },
         { regex: Todo.doneRe, token: 'todo-done' },
-        { regex: Todo.cancelRe, token: 'todo-cancel' }
+        { regex: Todo.cancelRe, token: 'todo-cancel' },
+        { regex: Todo.projectRe, token: 'todo-project' }
       ]
     };
 

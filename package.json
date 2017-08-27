@@ -1,7 +1,7 @@
 {
   "name": "noty",
   "productName": "Noty",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Autosaving sticky note with support for multiple notes, find/replace, programmers shortcuts and more.",
   "main": "dist/main.js",
   "scripts": {
