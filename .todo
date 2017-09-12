@@ -1,4 +1,6 @@
 
+☐ buggy `asdxaasdasdasd` outside of a todo
+☐ `foo ☐ bar` shouldn't be considered a todo (try to toggle it)
 ☐ Make a boilerplate out of this project (+React Router +Redux)
 ☐ Add automatic `Check for Updates...`
 ☐ Add `Print...` support
