@@ -40,7 +40,9 @@ Autosaving sticky note with support for multiple notes, find/replace, programmer
 - <kbd>Cmd+S</kbd> - Toggle strikethrough
 - <kbd>Cmd+1/9</kbd> - Select the 1st/9th note
 - <kbd>Alt+Cmd+Left</kbd> - Select the previous note
+- <kbd>Shift+Ctrl+Tab</kbd> - Select the previous note
 - <kbd>Alt+Cmd+Left</kbd> - Select the next note
+- <kbd>Ctrl+Tab</kbd> - Select the next note
 
 ## Contributing
 

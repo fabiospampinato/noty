@@ -194,9 +194,19 @@ const Utils = {
             accelerator: 'cmd+alt+left',
             click: () => win.webContents.send ( 'note-select-previous' )
           },
+          { //TODO: Should be hidden
+            label: 'Select Previous Note',
+            accelerator: 'shift+ctrl+tab',
+            click: () => win.webContents.send ( 'note-select-previous' )
+          },
           {
             label: 'Select Next Note',
             accelerator: 'cmd+alt+right',
+            click: () => win.webContents.send ( 'note-select-right' )
+          },
+          { //TODO: Should be hidden
+            label: 'Select Next Note',
+            accelerator: 'ctrl+tab',
             click: () => win.webContents.send ( 'note-select-right' )
           },
           { type: 'separator' },
