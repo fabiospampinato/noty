@@ -202,12 +202,12 @@ const Utils = {
           {
             label: 'Select Next Note',
             accelerator: 'cmd+alt+right',
-            click: () => win.webContents.send ( 'note-select-right' )
+            click: () => win.webContents.send ( 'note-select-next' )
           },
           { //TODO: Should be hidden
             label: 'Select Next Note',
             accelerator: 'ctrl+tab',
-            click: () => win.webContents.send ( 'note-select-right' )
+            click: () => win.webContents.send ( 'note-select-next' )
           },
           { type: 'separator' },
           {

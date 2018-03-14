@@ -42,7 +42,7 @@ class App extends React.Component<any, any> {
     ipc.on ( 'note-delete', this.noteDelete.bind ( this ) );
     ipc.on ( 'note-select', this.noteSelect.bind ( this ) );
     ipc.on ( 'note-select-previous', this.noteSelectPrevious.bind ( this ) );
-    ipc.on ( 'note-select-right', this.noteSelectNext.bind ( this ) );
+    ipc.on ( 'note-select-next', this.noteSelectNext.bind ( this ) );
     ipc.on ( 'note-font-bold', this.noteFontBold.bind ( this ) );
     ipc.on ( 'note-font-italic', this.noteFontItalic.bind ( this ) );
     ipc.on ( 'note-font-strikethrough', this.noteFontStrikethrough.bind ( this ) );
@@ -58,7 +58,7 @@ class App extends React.Component<any, any> {
     ipc.removeAllListeners ( 'note-delete' );
     ipc.removeAllListeners ( 'note-select' );
     ipc.removeAllListeners ( 'note-select-previous' );
-    ipc.removeAllListeners ( 'note-select-right' );
+    ipc.removeAllListeners ( 'note-select-next' );
     ipc.removeAllListeners ( 'note-font-bold' );
     ipc.removeAllListeners ( 'note-font-italic' );
     ipc.removeAllListeners ( 'note-font-strikethrough' );
