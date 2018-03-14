@@ -6,10 +6,11 @@ import * as CodeMirror from 'codemirror';
 import merge from 'conf-merge';
 import Link from './link';
 import Font from './font';
+import Tag from './tag';
 import Todo from './todo';
 
 /* TOKENS */
 
-const mode = merge ( {}, Link.getTokens (), Font.getTokens (), Todo.getTokens () );
+const mode = merge ( {}, Link.getTokens (), Font.getTokens (), Tag.getTokens (), Todo.getTokens () );
 
 CodeMirror.defineSimpleMode ( 'custom-mode', mode );
