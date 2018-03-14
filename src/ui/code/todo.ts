@@ -11,19 +11,19 @@ const Todo = {
   CHECKMARK: '✔',
   CANCELMARK: '✘',
 
-  boxRe: /^[^\S\n]*((?:[-❍❑■⬜□☐▪▫–—≡→›]|\[ \])[^\n@]*)/,
-  doneRe: /^[^\S\n]*((?:[✔✓☑+]|\[[x+]\])[^\n@]*)/,
-  cancelRe: /^[^\S\n]*((?:[✘x]|\[-\])[^\n@]*)/,
-  projectRe: /^(?![^\S\n]*(?:[-❍❑■⬜□☐▪▫–—≡→›✘x✔✓☑+]|\[[ x+-]\])[^\n@]*)[^\S\n]*(.+:[^\S\n]*)(?:(?=@)|$)/,
+  boxRe: /^[^\S\n]*((?!--|––|——)(?:[-❍❑■⬜□☐▪▫–—≡→›]|\[ \])[^\n@]*)/,
+  doneRe: /^[^\S\n]*((?:[✔✓☑+]|\[[xX+]\])[^\n@]*)/,
+  cancelRe: /^[^\S\n]*((?!--|––|——)(?:[✘xX]|\[-\])[^\n@]*)/,
+  projectRe: /^(?![^\S\n]*(?!--|––|——)(?:[-❍❑■⬜□☐▪▫–—≡→›✘xX✔✓☑+]|\[[ xX+-]\])[^\n]*)[^\S\n]*(.+:[^\S\n]*)(?:(?=@(?!.+ +[^@]))|$)/,
 
   getTokens () {
 
     return {
       start: [
-        { regex: Todo.boxRe, token: 'todo-box' },
-        { regex: Todo.doneRe, token: 'todo-done' },
-        { regex: Todo.cancelRe, token: 'todo-cancel' },
-        { regex: Todo.projectRe, token: 'todo-project' }
+        { sol: true, regex: Todo.boxRe, token: 'todo-box' },
+        { sol: true, regex: Todo.doneRe, token: 'todo-done' },
+        { sol: true, regex: Todo.cancelRe, token: 'todo-cancel' },
+        { sol: true, regex: Todo.projectRe, token: 'todo-project' }
       ]
     };
 
