@@ -5,7 +5,7 @@
 	<img src="resources/icon/icon-128x128.png" alt="Logo">
 </p>
 
-Autosaving sticky note with support for multiple notes, find/replace, programmers shortcuts and more.
+Autosaving sticky note for macOS with support for multiple notes, find/replace, programmers shortcuts and more.
 
 ## Features
 
