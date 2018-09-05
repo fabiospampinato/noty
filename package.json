@@ -24,8 +24,8 @@
     }
   },
   "build": {
-    "appId": "com.fabiospampinato.${name}",
-    "copyright": "Copyright © 2018-present ${author}",
+    "appId": "com.fabiospampinato.noty",
+    "copyright": "Copyright © 2018-present Fabio Spampinato",
     "directories": {
       "output": "releases"
     },
