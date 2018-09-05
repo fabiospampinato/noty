@@ -1,0 +1,21 @@
+
+*Bold* *Bold*
+`code` `code`
+_Italic_ _Italic_
+~Strikethrough~ ~Strikethrough~
+http://asdasd.com
+http://ex.com
+example.com
+www.example.com
+asdasd:
+asdasd: @asdasd
+@asd
+@asd(asd)
+☐ asdasd
+☐ asdasd @asdasd
+✔ asdasd @asdasd asdasd
+✘ asdasd @asdasd asdasd
+☐ asdasd *Bold*
+☐ asdasd `code`
+☐ asdasd _Italic_
+☐ asdasd ~Strikethrough~

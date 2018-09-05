@@ -1,0 +1,159 @@
+
+@font-face {
+  font-family: "FiraCode";
+  src: url("~@static/fonts/FiraCode-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.react-codemirror2 {
+
+  height: 100%;
+  box-sizing: border-box;
+
+  .CodeMirror {
+
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    line-height: 1.25;
+    font-size: $code-font-size;
+    font-family: "FiraCode";
+    color: $color-text;
+    -webkit-overflow-scrolling: touch;
+
+    pre {
+      padding: 0;
+      z-index: 1;
+      text-rendering: optimizeLegibility;
+      font-variant-ligatures: contextual;
+    }
+
+    .CodeMirror-scroll {
+      padding: $gutter-half $gutter;
+    }
+
+    .CodeMirror-crosshair {
+      cursor: text;
+    }
+
+    .CodeMirror-selected {
+      background: $color-code-selected;
+    }
+
+    .CodeMirror-cursor {
+      border-left: 1px solid $color-code-cursor;
+    }
+
+    .CodeMirror-lines {
+      padding: 0;
+    }
+
+    .CodeMirror-line span {
+      max-width: 100%;
+      padding-right: 0;
+    }
+
+    .CodeMirror-dialog {
+
+      display: flex;
+      align-items: center;
+      position: fixed;
+      top: $titlebar-height;
+      left: 0;
+      right: 0;
+      background: $color-code-dialog;
+      padding: $gutter-half $gutter;
+      border-bottom-width: 0;
+      font-family: sans-serif;
+      transition: box-shadow $shadow-animation-duration;
+
+      html.scrolled & {
+        box-shadow: 0 2px 3px 0 $shadow-color;
+      }
+
+      ~ .CodeMirror-scroll {
+        padding-top: $code-dialog-height + $gutter-half;
+      }
+
+    }
+
+    .CodeMirror-search-label {
+      white-space: nowrap;
+      padding-right: $gutter;
+    }
+
+    .CodeMirror-search-field {
+      width: 100% !important;
+      font-size: $code-dialog-font-size;
+      font-family: inherit;
+    }
+
+    .CodeMirror-search-hint {
+      display: none;
+    }
+
+    .cm-searching {
+      background: $color-code-match !important;
+    }
+
+    .cm-link {
+
+      color: $color-link;
+
+      html.meta & { // Meta key pressed
+
+        &:hover {
+          cursor: pointer;
+          color: $color-link-hover;
+        }
+
+        &:active {
+          color: $color-link-active;
+        }
+
+      }
+
+    }
+
+    .cm-bold {
+      font-weight: bold;
+    }
+
+    .cm-code {
+      color: $color-code;
+      font-family: monospace;
+    }
+
+    .cm-italic {
+      font-style: italic;
+    }
+
+    .cm-strikethrough {
+      text-decoration: line-through;
+    }
+
+    .cm-font-token {
+      opacity: $font-token-opacity;
+    }
+
+    .cm-project {
+      color: $color-project;
+    }
+
+    .cm-todo-done {
+      color: $color-todo-done;
+    }
+
+    .cm-todo-cancel {
+      color: $color-todo-cancel;
+    }
+
+    .cm-tag {
+      color: $color-tag;
+    }
+
+  }
+
+}

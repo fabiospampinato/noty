@@ -1,7 +1,0 @@
-{
-  "globalDependencies": {},
-  "dependencies": {
-    "react": "registry:npm/react#15.0.1+20170104200836",
-    "webpack": "registry:npm/webpack#1.12.9+20160418172948"
-  }
-}

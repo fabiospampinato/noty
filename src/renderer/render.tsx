@@ -4,7 +4,7 @@
 import * as React from 'react';
 import {render as reactRender} from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
-import App from 'ui/app/index';
+import App from './components/app';
 
 /* RENDER */
 
@@ -14,7 +14,7 @@ function render () {
     <AppContainer>
       <App />
     </AppContainer>,
-    document.getElementById ( 'react-root' )
+    document.getElementById ( 'app' )
   );
 
 }

@@ -38,5 +38,3 @@ node_modules
 # Project specific paths ignore
 dist
 releases
-typings
-.awcache

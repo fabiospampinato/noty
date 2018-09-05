@@ -1,25 +1,102 @@
 {
   "name": "noty",
   "productName": "Noty",
-  "version": "1.3.0",
-  "description": "Autosaving sticky note with support for multiple notes, find/replace, programmers shortcuts and more.",
-  "main": "dist/main.js",
+  "description": "Autosaving sticky note with support for multiple notes without needing multiple windows.",
+  "version": "2.0.0",
   "scripts": {
     "clean:dist": "rimraf dist",
     "clean:releases": "rimraf releases",
     "clean": "npm-run-all -p clean:dist clean:releases",
-    "build:main": "webpack --config webpack/main.ts",
-    "build:renderer": "webpack --config webpack/renderer/index.ts",
-    "build:server": "webpack --config webpack/server.ts",
-    "build:all": "npm-run-all -p build:main build:renderer build:server",
-    "start:main": "webpack --config webpack/main.ts --watch & nodemon --watch dist/main.js --exec 'electron dist/main.js'",
-    "start:server": "webpack --config webpack/renderer/index.ts --watch & node dist/server.js",
-    "start:prod": "open releases/Noty-darwin-x64/Noty.app",
-    "start": "HOT=1 npm-run-all -p start:main start:server",
-    "dev": "npm-run-all clean build:all start",
-    "package": "node package.js",
-    "dmg": "cd releases/Noty-darwin-x64 && create-dmg Noty.app",
-    "prod": "NODE_ENV=production npm-run-all clean build:all package dmg"
+    "compile": "electron-webpack app",
+    "build:mac": "npm run compile && electron-builder --mac",
+    "build:win": "npm run compile && electron-builder --win",
+    "build:linux": "npm run compile && electron-builder --linux",
+    "build:all": "npm run compile && electron-builder -mwl",
+    "dev": "electron-webpack dev",
+    "publish": "electron-builder --publish onTag"
+  },
+  "electronWebpack": {
+    "main": {
+      "webpackConfig": "webpack.js"
+    },
+    "renderer": {
+      "webpackConfig": "webpack.js"
+    }
+  },
+  "build": {
+    "appId": "com.fabiospampinato.${name}",
+    "copyright": "Copyright © 2018-present ${author}",
+    "directories": {
+      "output": "releases"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "pkg",
+        "zip"
+      ],
+      "category": "public.app-category.utilities",
+      "icon": "resources/icon/icon.png",
+      "type": "distribution"
+    },
+    "dmg": {
+      "background": "resources/dmg_background/background.png",
+      "iconSize": 160,
+      "iconTextSize": 12,
+      "window": {
+        "width": 660,
+        "height": 400
+      },
+      "contents": [
+        {
+          "x": 180,
+          "y": 170,
+          "type": "file"
+        },
+        {
+          "x": 480,
+          "y": 170,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "pkg": {
+      "license": "LICENSE"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable",
+        "zip"
+      ],
+      "icon": "resources/icon/icon.ico"
+    },
+    "nsis": {
+      "installerIcon": "resources/icon/icon.ico",
+      "license": "LICENSE",
+      "warningsAsErrors": false
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm",
+        "snap"
+      ],
+      "icon": "resources/icon/icon.png",
+      "category": "Utility"
+    },
+    "snap": {
+      "grade": "stable",
+      "summary": "Autosaving sticky note with support for multiple notes, find/replace, programmers shortcuts and more."
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "fabiospampinato",
+      "releaseType": "release",
+      "publishAutoUpdate": true
+    }
   },
   "license": "MIT",
   "author": {
@@ -29,7 +106,7 @@
   "homepage": "https://github.com/fabiospampinato/noty",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fabiospampinato/noty"
+    "url": "https://github.com/fabiospampinato/noty.git"
   },
   "bugs": {
     "url": "https://github.com/fabiospampinato/noty/issues"
@@ -43,60 +120,39 @@
     "note"
   ],
   "dependencies": {
-    "electron-about-window": "^1.6.1",
-    "electron-context-menu": "^0.9.1",
-    "electron-is": "^2.4.0",
-    "electron-localshortcut": "^2.0.2",
-    "electron-store": "^1.2.0",
+    "@types/codemirror": "0.0.60",
+    "@types/lodash": "^4.14.116",
+    "@types/react": "^16.4.13",
+    "@types/react-dom": "^16.0.7",
+    "codemirror": "^5.40.0",
+    "conf-merge": "^1.0.0",
+    "electron-context-menu": "^0.10.0",
+    "electron-debug": "^2.0.0",
+    "electron-devtools-installer": "^2.2.4",
+    "electron-is": "^3.0.0",
+    "electron-localshortcut": "^3.1.0",
+    "electron-store": "^2.0.0",
+    "electron-updater": "^3.1.2",
     "electron-window-state": "^4.1.1",
-    "jquery": "^3.2.1",
-    "lodash": "^4.17.4",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.10",
     "open": "0.0.5",
-    "react": "^15.6.1",
-    "react-codemirror2": "0.0.13",
-    "react-dom": "^15.6.1"
+    "react": "^16.4.2",
+    "react-codemirror2": "^5.1.0",
+    "react-dom": "^16.4.2",
+    "react-hot-loader": "^4.3.5",
+    "source-map-support": "^0.5.9"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^3.2.2",
-    "chalk": "^2.0.1",
-    "conf-merge": "^1.0.0",
-    "copy-webpack-plugin": "^4.0.1",
-    "create-dmg": "^1.3.0",
-    "css-loader": "^0.28.4",
-    "devtron": "^1.4.0",
-    "electron": "^1.7.5",
-    "electron-debug": "^1.3.0",
-    "electron-devtools-installer": "^2.2.0",
-    "electron-packager": "^8.7.2",
-    "express": "^4.15.3",
-    "extract-loader": "^1.0.0",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "file-loader": "^0.11.2",
-    "html-loader": "^0.5.0",
-    "isomorphic-style-loader": "^3.0.0",
-    "node-sass": "^4.5.3",
-    "nodemon": "^1.11.0",
-    "npm-run-all": "^4.0.2",
-    "react-hot-loader": "^3.0.0-beta.7",
-    "react-transform-catch-errors": "^1.0.2",
-    "react-transform-hmr": "^1.0.4",
-    "rimraf": "^2.6.1",
-    "sass-loader": "^6.0.6",
-    "source-map-loader": "^0.2.1",
-    "style-loader": "^0.18.2",
-    "ts-node": "^3.3.0",
-    "tslint": "^5.5.0",
-    "tslint-react": "^3.2.0",
-    "typescript": "^2.4.2",
-    "typings": "^2.1.1",
-    "uglifyjs-webpack-plugin": "^0.4.6",
-    "url-loader": "^0.5.9",
-    "webpack": "^3.4.1",
-    "webpack-bundle-analyzer": "^2.8.3",
-    "webpack-dev-middleware": "^1.12.0",
-    "webpack-dev-server": "^2.6.1",
-    "webpack-hot-middleware": "^2.18.2",
-    "webpack-node-externals": "^1.6.0",
-    "webpack-summary": "^1.1.0"
+    "@babel/preset-react": "^7.0.0",
+    "electron": "3.0.0-beta.8",
+    "electron-builder": "^20.28.3",
+    "electron-builder-squirrel-windows": "^20.28.3",
+    "electron-webpack": "^2.3.1",
+    "electron-webpack-ts": "^2.1.1",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "typescript": "^3.0.3",
+    "webpack": "^4.17.1"
   }
 }

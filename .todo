@@ -1,10 +1,12 @@
 
-☐ `foo ☐ bar` shouldn't be considered a todo (try to toggle it)
-☐ Make a boilerplate out of this project (+React Router +Redux)
-☐ Add automatic `Check for Updates...`
-☐ Add `Print...` support
-☐ Font: support for nested styles (_foo *nested* bar_)
-☐ Font: toggle should work like Svelto.Editor's implementation
-☐ Multi-cursor is broken
-☐ Redo doesn't work
-☐ Style inside todos
+Bugs:
+  ☐ Cmd-+ (zoom in) is broken (Electron's bug?)
+  ☐ A new note can sometimes have the previous one's content (react-codemirror2's bug?)
+  ☐ Find & Replace is broken (react-codemirror2's bug?)
+
+Future:
+  ☐ test on Ubuntu
+  ☐ test on Windows
+  ☐ replace `jQuery` with `cash-dom`
+  ☐ Support nested styles
+  ☐ Add `Print...` support

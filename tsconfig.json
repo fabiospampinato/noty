@@ -1,38 +1,19 @@
 {
-  "compileOnSave": false,
-  "buildOnSafe": false,
+  "extends": "./node_modules/electron-webpack/tsconfig-base.json",
   "compilerOptions": {
-    "baseUrl": "./src",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "baseUrl": "src",
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["dom", "scripthost", "es2015", "es2016", "es2017"],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "newLine": "LF",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "pretty": true,
-    "sourceMap": true,
+    "strict": false,
     "strictNullChecks": true,
-    "target": "es6"
-  },
-  "include": [
-    "src",
-    "types",
-    "typings"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "useBabel": false,
-    "useCache": true,
-    "silent": true,
-    "transpileOnly": true
+    "paths": {
+      "@/*": ["*"],
+      "@common/*": ["common/*"],
+      "@main/*": ["main/*"],
+      "@renderer/*": ["renderer/*"],
+      "@root/*": ["../*"],
+      "@static/*": ["../static/*"]
+    }
   }
 }
