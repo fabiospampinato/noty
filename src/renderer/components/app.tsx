@@ -280,6 +280,8 @@ class App extends React.Component<any, any> {
 
   render () {
 
+    eval ( '' ); //FIXME: Won't work in production otherwise //UGLY
+
     const note = this._getCurrentNote (),
           noteIndex = this._getCurrentNoteIndex (),
           titles = this.storeObj.notes.map ( note => note.title );

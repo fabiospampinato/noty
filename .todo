@@ -5,8 +5,6 @@ Bugs:
   ☐ Find & Replace is broken (react-codemirror2's bug?)
 
 Future:
-  ☐ test on Ubuntu
-  ☐ test on Windows
   ☐ replace `jQuery` with `cash-dom`
   ☐ Support nested styles
   ☐ Add `Print...` support
