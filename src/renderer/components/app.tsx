@@ -280,7 +280,7 @@ class App extends React.Component<any, any> {
 
   render () {
 
-    eval ( '' ); //FIXME: Won't work in production otherwise //UGLY
+    eval ( '' ); //FIXME: Won't work in production otherwise https://github.com/electron-userland/electron-webpack/issues/196
 
     const note = this._getCurrentNote (),
           noteIndex = this._getCurrentNoteIndex (),
