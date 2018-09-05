@@ -15,7 +15,7 @@ class App extends React.Component<any, any> {
 
   /* VARIABLES */
 
-  _changeEditor; _changeNote; _changeContent; editor; store;
+  _changeEditor; _changeNote; _changeContent; editor; store; storeObj;
 
   /* CONSTRUCTOR */
 
@@ -40,9 +40,10 @@ class App extends React.Component<any, any> {
       }
     });
 
+    this.storeObj = this.store.get ();
+
     this.state = {
-      focused: !!remote.BrowserWindow.getFocusedWindow (),
-      store: this.store.get ()
+      focused: !!remote.BrowserWindow.getFocusedWindow ()
     };
 
   }
@@ -81,7 +82,7 @@ class App extends React.Component<any, any> {
 
   _updateStore () {
 
-    this.store.set ( this.state.store );
+    this.store.set ( this.storeObj );
 
     this.forceUpdate ();
 
@@ -89,25 +90,25 @@ class App extends React.Component<any, any> {
 
   _getNoteIndexByTitle ( title ) {
 
-    return this.state.store.notes.findIndex ( note => note.title === title );
+    return this.storeObj.notes.findIndex ( note => note.title === title );
 
   }
 
   _getNoteByTitle ( title ) {
 
-    return this.state.store.notes.find ( note => note.title === title );
+    return this.storeObj.notes.find ( note => note.title === title );
 
   }
 
   _getCurrentNoteIndex () {
 
-    return this._getNoteIndexByTitle ( this.state.store.note );
+    return this._getNoteIndexByTitle ( this.storeObj.note );
 
   }
 
   _getCurrentNote () {
 
-    return this._getNoteByTitle ( this.state.store.note );
+    return this._getNoteByTitle ( this.storeObj.note );
 
   }
 
@@ -148,8 +149,8 @@ class App extends React.Component<any, any> {
       const content = '',
             note = { title, content };
 
-      this.state.store.note = title;
-      this.state.store.notes.push ( note );
+      this.storeObj.note = title;
+      this.storeObj.notes.push ( note );
 
       this._updateStore ();
 
@@ -172,11 +173,11 @@ class App extends React.Component<any, any> {
       if ( this._getNoteByTitle ( title ) ) return alert ( 'Note names must be unique' ); //TODO: Use a notification dialog instead
 
       note.title = title;
-      this.state.store.note = title;
+      this.storeObj.note = title;
 
       this._updateStore ();
 
-    }, { value: this.state.store.note } );
+    }, { value: this.storeObj.note } );
 
   }
 
@@ -186,11 +187,11 @@ class App extends React.Component<any, any> {
 
     if ( !confirm ( `Are you sure you want to delete "${note.title}"?` ) ) return; //TODO: Use a confirmation dialog instead
 
-    this.state.store.notes = this.state.store.notes.filter ( n => n.title !== note.title );
+    this.storeObj.notes = this.storeObj.notes.filter ( n => n.title !== note.title );
 
-    if ( this.state.store.notes.length ) {
+    if ( this.storeObj.notes.length ) {
 
-      this.state.store.note = this.state.store.notes[0].title;
+      this.storeObj.note = this.storeObj.notes[0].title;
 
     } else {
 
@@ -199,8 +200,8 @@ class App extends React.Component<any, any> {
         content: ''
       };
 
-      this.state.store.note = defaultNote.title;
-      this.state.store.notes = [defaultNote];
+      this.storeObj.note = defaultNote.title;
+      this.storeObj.notes = [defaultNote];
 
     }
 
@@ -210,11 +211,11 @@ class App extends React.Component<any, any> {
 
   noteSelectNumber ( nr ) {
 
-    const note = this.state.store.notes[nr - 1];
+    const note = this.storeObj.notes[nr - 1];
 
     if ( !note ) return;
 
-    this.state.store.note = note.title;
+    this.storeObj.note = note.title;
 
     this._updateStore ();
 
@@ -225,7 +226,7 @@ class App extends React.Component<any, any> {
   noteSelectNavigate ( modifier ) {
 
     const minNr = 0,
-          maxNr = this.state.store.notes.length - 1,
+          maxNr = this.storeObj.notes.length - 1,
           currNr = this._getCurrentNoteIndex ();
 
     let nextNr = currNr + modifier;
@@ -259,7 +260,7 @@ class App extends React.Component<any, any> {
 
   changeNote ( event ) {
 
-    this.state.store.note = event.target.value;
+    this.storeObj.note = event.target.value;
 
     this._updateStore ();
 
@@ -281,7 +282,7 @@ class App extends React.Component<any, any> {
 
     const note = this._getCurrentNote (),
           noteIndex = this._getCurrentNoteIndex (),
-          titles = this.state.store.notes.map ( note => note.title );
+          titles = this.storeObj.notes.map ( note => note.title );
 
     return (
       <div id="app-wrapper" className={this.state.focused ? 'focused' : ''}>
