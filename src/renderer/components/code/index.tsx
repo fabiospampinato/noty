@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import * as _ from 'lodash';
-import * as $ from 'jquery';
+import * as $ from 'cash-dom';
 import * as is from 'electron-is';
 import * as React from 'react';
 import {UnControlled as CodeMirror} from 'react-codemirror2';

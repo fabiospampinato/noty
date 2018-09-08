@@ -1,7 +1,7 @@
 
 /* IMPORT */
 
-import * as $ from 'jquery';
+import * as $ from 'cash-dom';
 import * as open from 'open';
 
 /* LINK */
