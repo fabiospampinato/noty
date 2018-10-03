@@ -2,7 +2,7 @@
   "name": "noty",
   "productName": "Noty",
   "description": "Autosaving sticky note with support for multiple notes without needing multiple windows.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "scripts": {
     "clean:dist": "rimraf dist",
     "clean:releases": "rimraf releases",
