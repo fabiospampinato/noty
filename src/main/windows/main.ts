@@ -149,6 +149,7 @@ class Main extends Window {
           },
           {
             label: 'Delete',
+            accelerator: 'CommandOrControl+Alt+Backspace',
             click: () => this.win.webContents.send ( 'note-delete' )
           },
           { type: 'separator' },

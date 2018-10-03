@@ -25,6 +25,7 @@ Autosaving sticky note with support for multiple notes without needing multiple 
 
 - <kbd>Cmd+N</kbd> - Create a new note
 - <kbd>F2</kbd> - Rename the current note
+- <kbd>Cmd+Alt+Backspace</kbd> - Delete the current note
 - <kbd>Tab</kbd> - Indent current line
 - <kbd>Shift+Tab</kbd> - Outdent current line
 - <kbd>Cmd+F</kbd> - Find
