@@ -75,6 +75,7 @@ New note and rename:
 ## Related
 
 - **[vscode-todo-plus](https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-todo-plus)**: Visual Studio Code extension that implements the same To-Do functionalities, and much more.
+- **[Notable](https://github.com/fabiospampinato/notable)**: The markdown-based note-taking app that doesn't suck.
 
 ## License
 
