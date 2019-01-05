@@ -3,10 +3,11 @@
 
 import * as _ from 'lodash';
 import * as path from 'path';
-import {app, BrowserWindow} from 'electron';
+import {BrowserWindow} from 'electron';
 import * as is from 'electron-is';
 import * as windowStateKeeper from 'electron-window-state';
-import Environment from '@common/enviroment';
+import pkg from '@root/package.json';
+import Environment from '@common/environment';
 
 /* WINDOW */
 
@@ -14,14 +15,16 @@ class Window {
 
   /* VARIABLES */
 
+  name: string;
   win: BrowserWindow;
   options: object;
   stateOptions: object;
 
   /* CONSTRUCTOR */
 
-  constructor ( options = {}, stateOptions = {} ) {
+  constructor ( name, options = {}, stateOptions = {} ) {
 
+    this.name = name;
     this.options = options;
     this.stateOptions = stateOptions;
 
@@ -72,6 +75,7 @@ class Window {
 
     this.___readyToShow ();
     this.___closed ();
+    this.___focused ();
 
   }
 
@@ -104,9 +108,23 @@ class Window {
 
   }
 
+  /* FOCUSED */
+
+  ___focused () {
+
+    this.win.on ( 'focus', this.__focused.bind ( this ) );
+
+  }
+
+  __focused () {
+
+    this.initMenu ();
+
+  }
+
   /* API */
 
-  make ( id = this.constructor.name.toLowerCase (), options = this.options, stateOptions = this.stateOptions ) {
+  make ( id = this.name, options = this.options, stateOptions = this.stateOptions ) {
 
     stateOptions = _.merge ({
       file: `${id}.json`,
@@ -118,12 +136,11 @@ class Window {
           dimensions = _.pick ( state, ['x', 'y', 'width', 'height'] );
 
     options = _.merge ( dimensions, {
-      frame: false,
-      autoHideMenuBar: true,
+      frame: !is.macOS (),
       backgroundColor: '#fef3a1',
       icon: path.join ( __static, 'images', `icon.${is.windows () ? 'ico' : 'png'}` ),
       show: false,
-      title: app.getName (),
+      title: pkg.productName,
       webPreferences: {
         webSecurity: false
       }

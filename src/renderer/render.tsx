@@ -1,18 +1,28 @@
 
 /* IMPORT */
 
+import '@renderer/template/index.scss';
+
 import * as React from 'react';
 import {render as reactRender} from 'react-dom';
-import {AppContainer} from 'react-hot-loader';
-import Environment from '@common/enviroment';
-import App from './components/app';
+import Identity from 'react-component-identity';
+import {Router} from 'react-router-static';
+import Environment from '@common/environment';
+import Routes from './routes';
+import ErrorBoundary from './components/error_boundary';
 
 /* RENDER */
 
-function render () {
+async function render () {
+
+  const AppContainer = Environment.isDevelopment ? ( await import ( 'react-hot-loader' ) ).AppContainer : Identity;
 
   reactRender (
-    Environment.isDevelopment ? <AppContainer><App /></AppContainer> : <App />,
+    <AppContainer>
+      <ErrorBoundary>
+        <Router routes={Routes} />
+      </ErrorBoundary>
+    </AppContainer>,
     document.getElementById ( 'app' )
   );
 

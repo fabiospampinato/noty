@@ -1,20 +1,33 @@
 
 /* IMPORT */
 
-const path = require ( 'path' );
+const TerserPlugin = require ( 'terser-webpack-plugin' ),
+      TSConfigPathsPlugin = require ( 'tsconfig-paths-webpack-plugin' ),
+      webpack = require ( 'webpack' );
 
 /* CONFIG */
 
 const config = {
   resolve: {
-    alias: {
-      '@': path.resolve ( __dirname, 'src' ),
-      '@common': path.resolve ( __dirname, 'src', 'common' ),
-      '@main': path.resolve ( __dirname, 'src', 'main' ),
-      '@renderer': path.resolve ( __dirname, 'src', 'renderer' ),
-      '@root': __dirname,
-      '@static': path.resolve ( __dirname, 'static' )
-    }
+    plugins: [
+      new TSConfigPathsPlugin ()
+    ]
+  },
+  plugins: [
+    new webpack.DefinePlugin ({
+      'Environment.isDevelopment': JSON.stringify ( process.env.NODE_ENV !== 'production' )
+    })
+  ],
+  optimization: {
+    minimizer: [
+      new TerserPlugin ({
+        parallel: true,
+        sourceMap: true,
+        terserOptions: {
+          keep_fnames: true
+        }
+      })
+    ]
   }
 };
 

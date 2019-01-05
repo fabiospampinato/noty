@@ -4,10 +4,8 @@
 import {app} from 'electron';
 import {autoUpdater} from 'electron-updater';
 import * as contextMenu from 'electron-context-menu';
-import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import * as is from 'electron-is';
-import Environment from '@common/enviroment';
-import pkg from '@root/package.json';
+import Environment from '@common/environment';
 import Main from './windows/main';
 import Window from './windows/window';
 
@@ -32,23 +30,7 @@ class App {
 
   init () {
 
-    this.initAbout ();
     this.initContextMenu ();
-
-  }
-
-  initAbout () {
-
-    if ( !is.macOS () ) return;
-
-    const {productName, version, license, author} = pkg;
-
-    app.setAboutPanelOptions ({
-      applicationName: productName,
-      applicationVersion: version,
-      copyright: `${license} © ${author.name}`,
-      version: ''
-    });
 
   }
 
@@ -58,9 +40,11 @@ class App {
 
   }
 
-  initDebug () {
+  async initDebug () {
 
     if ( !Environment.isDevelopment ) return;
+
+    const {default: installExtension, REACT_DEVELOPER_TOOLS} = await import ( 'electron-devtools-installer' );
 
     installExtension ( REACT_DEVELOPER_TOOLS );
 
@@ -102,7 +86,7 @@ class App {
 
     if ( this.win && this.win.win ) return;
 
-    this.win = new Main ();
+    this.load ();
 
   }
 
@@ -119,6 +103,14 @@ class App {
     this.initDebug ();
 
     autoUpdater.checkForUpdatesAndNotify ();
+
+    this.load ();
+
+  }
+
+  /* API */
+
+  load () {
 
     this.win = new Main ();
 

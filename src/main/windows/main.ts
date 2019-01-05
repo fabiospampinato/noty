@@ -2,25 +2,24 @@
 /* IMPORT */
 
 import * as _ from 'lodash';
-import {app, ipcMain as ipc, Menu, MenuItemConstructorOptions, shell} from 'electron';
+import {ipcMain as ipc, Menu, MenuItemConstructorOptions, shell} from 'electron';
 import * as is from 'electron-is';
 import * as localShortcut from 'electron-localshortcut';
-import * as path from 'path';
-import {format as formatURL} from 'url';
-import Environment from '@common/enviroment';
+import Environment from '@common/environment';
 import pkg from '@root/package.json';
-import UMenu from '../utils/menu';
-import Window from './window';
+import UMenu from '@main/utils/menu';
+import About from './about';
+import Route from './route';
 
 /* MAIN */
 
-class Main extends Window {
+class Main extends Route {
 
   /* CONSTRUCTOR */
 
-  constructor ( options = { minWidth: 150, minHeight: 100 }, stateOptions = { defaultWidth: 250, defaultHeight: 450 } ) {
+  constructor ( name = 'main', options = { minWidth: 150, minHeight: 100 }, stateOptions = { defaultWidth: 250, defaultHeight: 450 } ) {
 
-    super ( options, stateOptions );
+    super ( name, options, stateOptions );
 
   }
 
@@ -96,15 +95,14 @@ class Main extends Window {
 
     const template: MenuItemConstructorOptions[] = UMenu.filterTemplate ([
       {
-        label: app.getName (),
+        label: pkg.productName,
         submenu: [
           {
-            role: 'about',
-            visible: is.macOS ()
+            label: `About ${pkg.productName}`,
+            click: () => new About ()
           },
           {
-            type: 'separator',
-            visible: is.macOS ()
+            type: 'separator'
           },
           {
             role: 'services',
@@ -271,6 +269,10 @@ class Main extends Window {
           },
           { type: 'separator' },
           {
+            label: 'View Changelog',
+            click: () => shell.openExternal ( `${pkg.homepage}/blob/master/CHANGELOG.md` )
+          },
+          {
             label: 'View License',
             click: () => shell.openExternal ( `${pkg.homepage}/blob/master/LICENSE` )
           }
@@ -281,28 +283,6 @@ class Main extends Window {
     const menu = Menu.buildFromTemplate ( template );
 
     Menu.setApplicationMenu ( menu );
-
-  }
-
-  /* API */
-
-  load () {
-
-    if ( Environment.isDevelopment ) {
-
-      const {protocol, hostname, port} = Environment.wds;
-
-      this.win.loadURL ( `${protocol}://${hostname}:${port}` );
-
-    } else {
-
-      this.win.loadURL ( formatURL ({
-        pathname: path.join ( __dirname, 'index.html' ),
-        protocol: 'file',
-        slashes: true
-      }));
-
-    }
 
   }
 

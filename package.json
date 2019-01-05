@@ -4,19 +4,21 @@
   "description": "Autosaving sticky note with support for multiple notes without needing multiple windows.",
   "version": "2.1.0",
   "scripts": {
-    "clean:dist": "rimraf dist",
-    "clean:releases": "rimraf releases",
+    "clean:deps": "del 'node_modules/**/{README,LICENSE,license,.travis.yml,tsconfig.json,*.{md,MD,map,png,svg,ts}}' '!node_modules/**/*.d.ts'",
+    "clean:dist": "del dist",
+    "clean:releases": "del releases",
     "clean": "npm-run-all -p clean:dist clean:releases",
-    "compile": "electron-webpack app",
+    "compile": "npm run clean:deps && electron-webpack app --env.minify=false",
     "build:mac": "npm run compile && electron-builder --mac",
     "build:win": "npm run compile && electron-builder --win",
     "build:linux": "npm run compile && electron-builder --linux",
-    "build:all": "npm run compile && electron-builder -mwl",
+    "build:all": "npm run clean:releases && npm run compile && electron-builder -mwl",
     "dev": "electron-webpack dev",
     "prod": "npm run compile && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dir && open releases/mac/*.app",
     "publish": "electron-builder --publish onTag"
   },
   "electronWebpack": {
+    "staticSourceDirectory": "src/renderer/static",
     "main": {
       "webpackConfig": "webpack.js"
     },
@@ -26,7 +28,7 @@
   },
   "build": {
     "appId": "com.fabiospampinato.noty",
-    "copyright": "Copyright © 2018-present Fabio Spampinato",
+    "copyright": "Copyright © 2017-present Fabio Spampinato",
     "directories": {
       "output": "releases"
     },
@@ -90,7 +92,7 @@
     },
     "snap": {
       "grade": "stable",
-      "summary": "Autosaving sticky note with support for multiple notes, find/replace, programmers shortcuts and more."
+      "summary": "Autosaving sticky note with support for multiple notes without needing multiple windows."
     },
     "publish": {
       "provider": "github",
@@ -121,39 +123,42 @@
     "note"
   ],
   "dependencies": {
-    "@types/codemirror": "0.0.60",
-    "@types/lodash": "^4.14.116",
-    "@types/react": "^16.4.13",
-    "@types/react-dom": "^16.0.7",
     "cash-dom": "^2.3.5",
     "codemirror": "^5.40.0",
     "conf-merge": "^1.0.0",
     "electron-context-menu": "^0.10.0",
-    "electron-debug": "^2.0.0",
-    "electron-devtools-installer": "^2.2.4",
     "electron-is": "^3.0.0",
     "electron-localshortcut": "^3.1.0",
     "electron-store": "^2.0.0",
-    "electron-updater": "^3.1.2",
+    "electron-updater": "^4.0.6",
     "electron-window-state": "^4.1.1",
     "lodash": "^4.17.10",
     "open": "0.0.5",
     "react": "^16.4.2",
     "react-codemirror2": "^5.1.0",
+    "react-component-identity": "^1.0.1",
     "react-dom": "^16.4.2",
-    "react-hot-loader": "^4.3.5",
-    "source-map-support": "^0.5.9"
+    "react-router-static": "^1.0.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.0.0",
-    "electron": "3.0.0-beta.8",
-    "electron-builder": "^20.28.3",
-    "electron-builder-squirrel-windows": "^20.28.3",
-    "electron-webpack": "^2.3.1",
-    "electron-webpack-ts": "^2.1.1",
-    "node-sass": "^4.9.3",
+    "@types/codemirror": "0.0.60",
+    "@types/lodash": "^4.14.116",
+    "@types/react": "^16.4.13",
+    "@types/react-dom": "^16.0.7",
+    "del-cli": "^1.1.0",
+    "electron": "3.0.0",
+    "electron-builder": "^20.38.4",
+    "electron-builder-squirrel-windows": "^20.38.3",
+    "electron-devtools-installer": "^2.2.4",
+    "electron-webpack": "git://github.com/fabiospampinato/electron-webpack.git#package-electron-webpack",
+    "electron-webpack-ts": "^3.1.0",
+    "node-sass": "^4.11.0",
     "npm-run-all": "^4.1.3",
+    "react-hot-loader": "^4.3.5",
     "sass-loader": "^7.1.0",
+    "terser-webpack-plugin": "^1.2.0",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.0.3",
     "webpack": "^4.17.1"
   }

@@ -1,0 +1,20 @@
+
+.button {
+
+  display: inline-block;
+  background-color: $color-button;
+  color: $color-button-text;
+  padding: $gutter-half $gutter;
+  border-radius: $gutter-half;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-button-hover;
+  }
+
+  &:active {
+    background-color: $color-button-active;
+  }
+
+}

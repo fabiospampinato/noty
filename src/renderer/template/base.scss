@@ -6,7 +6,13 @@ body {
   height: 100%;
   width: 100%;
   font-family: sans-serif;
-  background-color: $color-base;
+  background-color: $color-main;
   color: $color-text;
   user-select: none;
+}
+
+pre {
+  max-width: 100%;
+  overflow: auto;
+  padding: $gutter;
 }

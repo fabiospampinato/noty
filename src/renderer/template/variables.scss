@@ -2,14 +2,15 @@
 $gutter: 10px;
 $gutter-half: $gutter / 2;
 
-$color-base: #fef3a1;
+$color-about: #ececec;
+$color-main: #fef3a1;
 $color-text: #1f1f1f;
 
 $color-link: #1543F9;
 $color-link-hover: lighten( $color-link, 10% );
 $color-link-active: darken( $color-link, 15% );
 
-$color-titlebar: darken( $color-base, 15% );
+$color-titlebar: darken( $color-main, 15% );
 $color-titlebar-title: transparent;
 $color-titlebar-title-hover: darken( $color-titlebar, 15% );
 $color-titlebar-title-active: darken( $color-titlebar, 20% );
@@ -25,6 +26,11 @@ $color-tag: #f97f26;
 $color-todo-done:  #10C413;
 $color-todo-cancel: #f92672;
 
+$color-button: $color-todo-cancel;
+$color-button-hover: lighten( $color-button, 10% );
+$color-button-active: darken( $color-button, 15% );
+$color-button-text: #ffffff;
+
 $code-font-size: 13px;
 $code-dialog-font-size: $code-font-size;
 $code-dialog-height: 27px; //FIXME: Hacky
@@ -36,3 +42,5 @@ $titlebar-height: 22px;
 $titlebar-font-size: 12px;
 
 $font-token-opacity: .25;
+
+$about-desc-font-size: .5946142301em;

@@ -1,7 +1,6 @@
 
 /* IMPORT */
 
-import '../template/index.scss';
 import * as _ from 'lodash';
 import * as React from 'react';
 import {remote, ipcRenderer as ipc} from 'electron';
@@ -9,9 +8,9 @@ import * as Store from 'electron-store';
 import Code from './code';
 import Titlebar from './titlebar';
 
-/* APP */
+/* MAIN */
 
-class App extends React.Component<any, any> {
+class Main extends React.Component<any, any> {
 
   /* VARIABLES */
 
@@ -301,4 +300,4 @@ class App extends React.Component<any, any> {
 
 /* EXPORT */
 
-export default App;
+export default Main;

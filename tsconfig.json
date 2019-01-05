@@ -2,18 +2,20 @@
   "extends": "./node_modules/electron-webpack/tsconfig-base.json",
   "compilerOptions": {
     "baseUrl": "src",
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
+    "lib": ["dom", "scripthost", "es2015", "es2016", "es2017"],
     "noUnusedParameters": false,
+    "resolveJsonModule": true,
     "strict": false,
     "strictNullChecks": true,
     "paths": {
-      "@/*": ["*"],
       "@common/*": ["common/*"],
       "@main/*": ["main/*"],
       "@renderer/*": ["renderer/*"],
       "@root/*": ["../*"],
-      "@static/*": ["../static/*"]
+      "@static/*": ["renderer/static/*"]
     }
   }
 }
