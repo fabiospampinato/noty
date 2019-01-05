@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import * as $ from 'cash-dom';
-import * as open from 'open';
+import {shell} from 'electron';
 
 /* LINK */
 
@@ -28,7 +28,7 @@ const Link = {
       if ( !/^https?:\/\//i.test ( url ) ) {
         url = `http://${url}`;
       }
-      open ( url );
+      shell.openExternal ( url );
     });
 
   },
