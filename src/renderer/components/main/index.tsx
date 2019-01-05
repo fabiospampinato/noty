@@ -4,6 +4,7 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 import {remote, ipcRenderer as ipc} from 'electron';
+import Dialog from 'electron-dialog';
 import * as Store from 'electron-store';
 import Code from './code';
 import Titlebar from './titlebar';
@@ -143,7 +144,7 @@ class Main extends React.Component<any, any> {
 
       if ( !title ) return;
 
-      if ( this._getNoteByTitle ( title ) ) return alert ( 'Note names must be unique' ); //TODO: Use a notification dialog instead
+      if ( this._getNoteByTitle ( title ) ) return Dialog.alert ( 'Note names must be unique' ); //TODO: Use a notification dialog instead
 
       const content = '',
             note = { title, content };
@@ -169,7 +170,7 @@ class Main extends React.Component<any, any> {
 
       if ( note.title === title ) return;
 
-      if ( this._getNoteByTitle ( title ) ) return alert ( 'Note names must be unique' ); //TODO: Use a notification dialog instead
+      if ( this._getNoteByTitle ( title ) ) return Dialog.alert ( 'Note names must be unique' ); //TODO: Use a notification dialog instead
 
       note.title = title;
       this.storeObj.note = title;
@@ -184,7 +185,7 @@ class Main extends React.Component<any, any> {
 
     const note = this._getCurrentNote ();
 
-    if ( !confirm ( `Are you sure you want to delete "${note.title}"?` ) ) return; //TODO: Use a confirmation dialog instead
+    if ( !Dialog.confirm ( `Are you sure you want to delete "${note.title}"?` ) ) return; //TODO: Use a confirmation dialog instead
 
     this.storeObj.notes = this.storeObj.notes.filter ( n => n.title !== note.title );
 
