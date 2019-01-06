@@ -21,14 +21,14 @@ const options: any = { //TSC
   indentUnit: 2,
   indentWithTabs: false,
   lineNumbers: false,
-  lineSeparator: '\n',
   lineWrapping: true,
   mode: 'noty',
-  scrollbarStyle: 'null',
+  scrollbarStyle: 'native',
   smartIndent: false,
   tabSize: 2,
   undoDepth: 1000,
   keyMap: 'sublime',
+  viewportMargin: Infinity,
   extraKeys: {
     'Backspace': 'delCharBefore',
     [`${CTMD}-Z`]: 'undo',
@@ -58,17 +58,11 @@ const options: any = { //TSC
   }
 };
 
+Utils.defineMode ();
+
 /* CODE */
 
 class Code extends React.Component<any, any> {
-
-  constructor ( props ) {
-
-    super ( props );
-
-    Utils.defineMode ();
-
-  }
 
   shouldComponentUpdate ( nextProps ) {
 
