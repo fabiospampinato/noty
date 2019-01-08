@@ -7,6 +7,7 @@ import * as React from 'react';
 import {render as reactRender} from 'react-dom';
 import Identity from 'react-component-identity';
 import {Router} from 'react-router-static';
+import {Provider} from 'overstated';
 import Environment from '@common/environment';
 import Routes from './routes';
 import ErrorBoundary from './components/error_boundary';
@@ -19,9 +20,11 @@ async function render () {
 
   reactRender (
     <AppContainer>
-      <ErrorBoundary>
-        <Router routes={Routes} />
-      </ErrorBoundary>
+      <Provider>
+        <ErrorBoundary>
+          <Router routes={Routes} />
+        </ErrorBoundary>
+      </Provider>
     </AppContainer>,
     document.getElementById ( 'app' )
   );

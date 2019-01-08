@@ -1,11 +1,11 @@
 
 /* IMPORT */
 
-import * as _ from 'lodash';
-import * as $ from 'cash-dom';
 import * as is from 'electron-is';
+import {connect} from 'overstated';
 import * as React from 'react';
 import {UnControlled as CodeMirror} from 'react-codemirror2';
+import Main from '@renderer/containers/main';
 import Utils from './utils';
 import Font from './items/font';
 import Todo from './items/todo';
@@ -62,37 +62,25 @@ Utils.defineMode ();
 
 /* CODE */
 
-class Code extends React.Component<any, any> {
-
-  shouldComponentUpdate ( nextProps ) {
-
-    return this.props.id !== nextProps.id;
-
-  }
+class Code extends React.PureComponent<any, undefined> {
 
   componentDidMount () {
 
-    this._onScroll ();
+    this.props.reset ();
 
   }
 
-  _onScroll () {
+  componentDidUpdate () {
 
-    let scrolled = false;
-
-    $('.CodeMirror-scroll').off ( 'scroll' ).on ( 'scroll', event => {
-      if ( scrolled === !!event.currentTarget.scrollTop ) return;
-      scrolled = !!event.currentTarget.scrollTop;
-      $('html').toggleClass ( 'scrolled', scrolled );
-    });
+    this.props.reset ();
 
   }
 
   render () {
 
-    const {value, onChange, onEditor} = this.props;
+    const {value, onChange, onEditor, onScroll} = this.props;
 
-    return <CodeMirror value={value} onChange={onChange} editorDidMount={onEditor} options={options} />;
+    return <CodeMirror value={value} onChange={onChange} onScroll={onScroll} editorDidMount={onEditor} options={options} />;
 
   }
 
@@ -100,4 +88,12 @@ class Code extends React.Component<any, any> {
 
 /* EXPORT */
 
-export default Code;
+export default connect ({
+  container: Main,
+  shouldComponentUpdate: 'id',
+  selector: ({ container, value, onChange, onEditor }) => ({
+    value, onChange, onEditor,
+    reset: container.editor.reset,
+    onScroll: container.editor.onScroll
+  })
+})( Code );

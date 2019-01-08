@@ -2,19 +2,16 @@
 /* IMPORT */
 
 import * as React from 'react';
-import {ipcRenderer as ipc} from 'electron';
 import * as is from 'electron-is';
-
-/* HELPERS */
-
-const windowClose = () => ipc.send ( 'window-close' );
+import {connect} from 'overstated';
+import Main from '@renderer/containers/main';
 
 /* TITLEBAR */
 
-const Titlebar = ({ title, titles, onChange }) => (
+const Titlebar = ({ title, titles, onChange, close }) => (
   <div id="titlebar">
     {!is.macOS () ? null : (
-      <div id="titlebar-close" onClick={windowClose}>
+      <div id="titlebar-close" onClick={close}>
         <svg x="0px" y="0px" viewBox="0 0 6.4 6.4">
           <polygon fill="#4d0000" points="6.4,0.8 5.6,0 3.2,2.4 0.8,0 0,0.8 2.4,3.2 0,5.6 0.8,6.4 3.2,4 5.6,6.4 6.4,5.6 4,3.2"></polygon>
         </svg>
@@ -33,4 +30,10 @@ const Titlebar = ({ title, titles, onChange }) => (
 
 /* EXPORT */
 
-export default Titlebar;
+export default connect ({
+  container: Main,
+  selector: ({ container, title, titles, onChange }) => ({
+    title, titles, onChange,
+    close: container.window.close
+  })
+})( Titlebar );

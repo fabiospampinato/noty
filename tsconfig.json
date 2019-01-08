@@ -10,6 +10,7 @@
     "resolveJsonModule": true,
     "strict": false,
     "strictNullChecks": true,
+    "target": "es5",
     "paths": {
       "@common/*": ["common/*"],
       "@main/*": ["main/*"],

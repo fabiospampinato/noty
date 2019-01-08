@@ -2,10 +2,11 @@
 /* IMPORT */
 
 import * as _ from 'lodash';
-import {ipcMain as ipc, Menu, MenuItemConstructorOptions, shell} from 'electron';
+import {Menu, MenuItemConstructorOptions, shell} from 'electron';
 import * as is from 'electron-is';
 import * as localShortcut from 'electron-localshortcut';
 import Environment from '@common/environment';
+import Settings from '@common/settings';
 import pkg from '@root/package.json';
 import UMenu from '@main/utils/menu';
 import About from './about';
@@ -31,7 +32,6 @@ class Main extends Route {
 
     this.___focus ();
     this.___blur ();
-    this.___windowClose ();
 
   }
 
@@ -45,7 +45,7 @@ class Main extends Route {
 
   __focus () {
 
-    this.win.webContents.send ( 'app-focus' );
+    this.win.webContents.send ( 'window-focus' );
 
   }
 
@@ -59,21 +59,7 @@ class Main extends Route {
 
   __blur () {
 
-    this.win.webContents.send ( 'app-blur' );
-
-  }
-
-  /* WINDOW CLOSE */
-
-  ___windowClose () {
-
-    ipc.on ( 'window-close', this.__windowClose.bind ( this ) );
-
-  }
-
-  __windowClose () {
-
-    this.win.close ();
+    this.win.webContents.send ( 'window-blur' );
 
   }
 
@@ -138,7 +124,7 @@ class Main extends Route {
           {
             label: 'New',
             accelerator: 'CommandOrControl+N',
-            click: () => this.win.webContents.send ( 'note-new' )
+            click: () => this.win.webContents.send ( 'note-add' )
           },
           {
             label: 'Rename',
@@ -153,7 +139,7 @@ class Main extends Route {
           { type: 'separator' },
           {
             label: 'Open Configuration',
-            click: () => this.win.webContents.send ( 'store-open' )
+            click: () => Settings.openInEditor ()
           }
         ]
       },

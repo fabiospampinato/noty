@@ -9,7 +9,7 @@
   font-size: $titlebar-font-size;
   transition: box-shadow $shadow-animation-duration;
 
-  html.scrolled & {
+  #app-wrapper.scrolled & {
     box-shadow: 0 2px 3px 0 $shadow-color;
   }
 
