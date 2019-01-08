@@ -1,9 +1,4 @@
 
-☐ remove useless dependencies
-☐ use `electron-dialog`
-☐ manage the state via `overstated`
-☐ https://github.com/fabiospampinato/noty/issues/5
-
 Bugs:
   ☐ Cmd-+ (zoom in) is broken (Electron's bug?)
   ☐ A new note can sometimes have the previous one's content (react-codemirror2's bug?)

@@ -2,7 +2,7 @@
   "name": "noty",
   "productName": "Noty",
   "description": "Autosaving sticky note with support for multiple notes without needing multiple windows.",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "scripts": {
     "clean:deps": "del 'node_modules/**/{README,LICENSE,license,.travis.yml,tsconfig.json,*.{md,MD,map,png,svg,ts}}' '!node_modules/**/*.d.ts'",
     "clean:dist": "del dist",
