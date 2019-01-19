@@ -67,10 +67,10 @@ class Main extends Route {
 
   initLocalShortcuts () {
 
-    /* CommandOrControl + 1-9 */
+    /* CmdOrCtrl + 1-9 */
 
     _.range ( 1, 10 ).forEach ( nr => {
-      localShortcut.register ( this.win, `CommandOrControl+${nr}`, () => {
+      localShortcut.register ( this.win, `CmdOrCtrl+${nr}`, () => {
         this.win.webContents.send ( 'note-select-number', nr );
       });
     });
@@ -123,7 +123,7 @@ class Main extends Route {
         submenu: [
           {
             label: 'New',
-            accelerator: 'CommandOrControl+N',
+            accelerator: 'CmdOrCtrl+N',
             click: () => this.win.webContents.send ( 'note-add' )
           },
           {
@@ -133,7 +133,7 @@ class Main extends Route {
           },
           {
             label: 'Delete',
-            accelerator: 'CommandOrControl+Alt+Backspace',
+            accelerator: 'CmdOrCtrl+Alt+Backspace',
             click: () => this.win.webContents.send ( 'note-delete' )
           },
           { type: 'separator' },
@@ -207,7 +207,7 @@ class Main extends Route {
           { type: 'separator' },
           {
             label: 'Select Previous Note',
-            accelerator: 'CommandOrControl+Alt+Left',
+            accelerator: 'CmdOrCtrl+Alt+Left',
             click: () => this.win.webContents.send ( 'note-select-previous' )
           },
           {
@@ -217,7 +217,7 @@ class Main extends Route {
           },
           {
             label: 'Select Next Note',
-            accelerator: 'CommandOrControl+Alt+Right',
+            accelerator: 'CmdOrCtrl+Alt+Right',
             click: () => this.win.webContents.send ( 'note-select-next' )
           },
           {
