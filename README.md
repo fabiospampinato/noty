@@ -60,6 +60,10 @@ New note and rename:
 
 ![New note and rename](resources/demo/creation.gif)
 
+## Installing
+
+Download an installer from the [releases page](https://github.com/fabiospampinato/noty/releases).
+
 ## Contributing
 
 If you have an idea, or found an problem, please open an [issue](https://github.com/fabiospampinato/noty/issues) about it.
