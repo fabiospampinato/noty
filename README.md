@@ -1,5 +1,5 @@
 
-# Noty
+# Noty ([DOWNLOAD](https://github.com/fabiospampinato/noty/releases))
 
 <p align="center">
   <img src="resources/icon/icon.png" alt="Logo" width="128">
