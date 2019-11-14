@@ -1,3 +1,4 @@
+> **Warning**: This app is now deprecated, you should use [Notable](https://notable.md) instead, which is a much better note-taking app overall, its zen mode can replace Noty's UI pretty effectively and it is very actively developed.
 
 # Noty ([DOWNLOAD](https://github.com/fabiospampinato/noty/releases))
 
